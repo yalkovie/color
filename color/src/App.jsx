@@ -6,12 +6,11 @@ function App() {
 
   const [allcolor, setallcolor] = useState({'R': 0, 'G': 0, 'B': 0})
   let list = useRef(null)
+  useEffect(fetch_func, [])
 
-  useEffect(() => {
-    fetch('./color/public/colors.json')
-    .then(a => a.json())
-    .then(a => list.current = a)
-  }, [])
+  function fetch_func () {
+    fetch('./color/public/colors.json').then(a => a.json()).then(a => list.current = a)
+  }
 
   function handlechangecolor(name_color, color_value) {
     let key = name_color[0]
