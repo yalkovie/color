@@ -5,11 +5,11 @@ import ChangerColor from './components/ChangerColor/ChangerColor'
 function App() {
 
   const [allcolor, setallcolor] = useState({'R': 0, 'G': 0, 'B': 0})
-  let list = useRef(null)
+  const [list, setList] = useState([]);
   useEffect(fetch_func, [])
 
   function fetch_func () {
-    fetch('./color/public/colors.json').then(a => a.json()).then(a => list.current = a)
+    fetch('./color/public/colors.json').then(a => a.json()).then(a => setList(a))
   }
 
   function handlechangecolor(name_color, color_value) {
